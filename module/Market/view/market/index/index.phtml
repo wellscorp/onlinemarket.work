@@ -1,3 +1,9 @@
 <h2>
     Index Market
 </h2>
+
+<?php if(isset($this->messages) && count($this->messages)): ?>
+<span style="color: red">
+    <?php echo $this->htmlList($this->messages); ?>
+</span>
+<?php endif; ?>
