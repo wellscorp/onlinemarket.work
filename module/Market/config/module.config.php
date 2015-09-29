@@ -33,6 +33,16 @@ return array(
 
                 'may_terminate' => true,
                 'child_routes' => array(
+                    'narket-bar' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/',
+                            'defaults' => array(
+                                'controller' => 'market-index-controller',
+                                'action' => 'index'
+                            ),
+                        ),
+                    ),
                     'view' => array(
                         'type' => 'Literal',
                         'options' => array(
@@ -44,6 +54,15 @@ return array(
                         ),
                         'may_terminate' => true,
                         'child_routes' => array(
+                            'view-bar' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/',
+                                    'defaults' => array(
+                                        'action' => 'index'
+                                    ),
+                                ),
+                            ),
                             'main' => array(
                                 'type'    => 'Segment',
                                 'options' => array(
