@@ -9,23 +9,20 @@
 namespace Market\Factory;
 
 
+use Market\Form\PostFilter;
 use Market\Form\PostForm;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class PostFormFactory implements FactoryInterface{
+class PostFilterFactory implements FactoryInterface{
 
     public function createService(ServiceLocatorInterface $sm){
 
-        $categories = $sm->get('categories');
-
-        $form =  new PostForm();
-        $form->setCategories($categories);
-        $form->buildForm();
-        $form->setInputFilter($sm->get('market-post-filter'));
-
-        return $form;
+        $filter = new PostFilter();
+        $filter->setCategories($sm->get('categories'));
+        $filter->buildFilter();
+        return $filter;
     }
 
 } 

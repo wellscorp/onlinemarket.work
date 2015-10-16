@@ -28,11 +28,23 @@ class PostController extends AbstractActionController{
     public function indexAction()
     {
         $data = $this->params()->fromPost();
-        $this->postForm->setData($data);
-
         $viewModel = new ViewModel(array('postForm' => $this->postForm, 'data' => $data));
-        //$viewModel->setTemplate('market/post/invalid.phtml');
+        $viewModel->setTemplate('market/post/index.phtml');
 
+        if($this->getRequest()->isPost()){
+            $this->postForm->setData($data);
+            if($this->postForm->isValid()){
+                $this->flashMessenger()->addMessage('Thanks for posting!');
+                $this->redirect()->toRoute('home');
+            }else{
+                $invalidView = new ViewModel();
+                $invalidView->setTemplate('market/post/invalid.phtml');
+                $invalidView->addChild($viewModel, 'main');
+
+                return $invalidView;
+            }
+        }
+        //$viewModel->setTemplate('market/post/invalid.phtml');
         return $viewModel;
     }
 } 

@@ -53,6 +53,8 @@ class PostForm extends Form{
             ))
         ;
 
+
+
         $submit = new Element\Submit('submit');
         $submit->setValue('Post')//->setAttribute('value' => 'Post')
         ;
