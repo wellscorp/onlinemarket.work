@@ -114,6 +114,11 @@ return array(
             'alt' => 'market-view-controller'
         )
     ),
+    'service_manager' => array(
+        'factories' => array(
+            'market-post-form' => 'Market\Factory\PostFormFactory'
+        ),
+    ),
     'view_manager' => array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
