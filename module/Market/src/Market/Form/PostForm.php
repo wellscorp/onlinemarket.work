@@ -53,6 +53,28 @@ class PostForm extends Form{
             ))
         ;
 
+        $price = new Element\Number('price');
+        $price->setLabel('price');
+        $data_expires = new Element\Radio('data_expires');
+        $data_expires->setLabel('data_expires');
+        $description = new Element\Textarea('description');
+        $description->setLabel('description');
+        $photo_filername = new Element\Url('photo_filername');
+        $photo_filername->setLabel('photo_filername');
+        $contact_name = new Element\Text('contact_name');
+        $contact_name->setLabel('contact_name');
+        $contact_email = new Element\Email('contact_email');
+        $contact_email->setLabel('contact_email');
+        $contact_phone = new Element\Text('contact_phone');
+        $contact_phone->setLabel('contact_phone');
+        $cityCode = new Element\Select('cityCode');
+        $cityCode->setLabel('cityCode');
+
+        $delete_code = new Element\Number('delete_code');
+        $delete_code->setLabel('delete_code');
+        $captcha = new Element\Captcha('captcha');
+        $captcha->setLabel('captcha');
+
 
 
         $submit = new Element\Submit('submit');

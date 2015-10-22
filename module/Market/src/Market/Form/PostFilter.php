@@ -47,6 +47,50 @@ class PostFilter extends InputFilter
         ;
 
 
+        $priceRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
+        $price = new Input('price');
+        $price->getValidatorChain()
+            ->attach($priceRegex)
+        ;
+        $data_expires = new Input('data_expires');
+        $data_expires->getValidatorChain()
+            ->attachByName('StringTrim')
+            ->attachByName('StripTags')
+        ;
+        $description = new Input('description');
+        $description->getValidatorChain()
+            ->attachByName('StringLength', array('min'=>1, 'max'=>128))
+        ;
+        $photoRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
+        $photo_filername = new Input('photo_filername');
+        $photo_filername->getValidatorChain()
+            ->attach($photoRegex)
+        ;
+        $contactRegex = new Regex(array('pattern' => '/^[a-zA-Z0-9 ]**$/'));
+        $contact_name = new Input('contact_name');
+        $contact_name->getValidatorChain()
+            ->attach($contactRegex)
+        ;
+        $contact_email = new Input('contact_email');
+        $contact_email->getValidatorChain()
+            ->attachByName('StringTrim')
+            ->attachByName('StripTags')
+        ;
+        $phoneRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
+        $contact_phone = new Input('contact_phone');
+        $contact_phone->getValidatorChain()
+            ->attach($phoneRegex)
+        ;
+        $cityCode = new Input('cityCode');
+        $cityCode->getValidatorChain()
+            ->attachByName('InArray', array('haystack' => array()))
+        ;
+        $codeRegex = new Regex(array('pattern' => '/^[a-zA-Z0-9 ]**$/'));
+        $delete_code = new Input('delete_code');
+        $delete_code->getValidatorChain()
+            ->attach($codeRegex)
+        ;
+
 
         $this->add($category)
             ->add($title)
