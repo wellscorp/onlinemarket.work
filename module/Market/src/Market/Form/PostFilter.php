@@ -54,8 +54,6 @@ class PostFilter extends InputFilter
         ;
         $data_expires = new Input('data_expires');
         $data_expires->getValidatorChain()
-            ->attachByName('StringTrim')
-            ->attachByName('StripTags')
         ;
         $description = new Input('description');
         $description->getValidatorChain()
