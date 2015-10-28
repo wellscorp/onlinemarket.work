@@ -64,16 +64,6 @@ class PostFilter extends InputFilter
         $photo_filername->getValidatorChain()
             ->attach($photoRegex)
         ;
-        $contactRegex = new Regex(array('pattern' => '/^[a-zA-Z0-9 ]**$/'));
-        $contact_name = new Input('contact_name');
-        $contact_name->getValidatorChain()
-            ->attach($contactRegex)
-        ;
-        $contact_email = new Input('contact_email');
-        $contact_email->getValidatorChain()
-            ->attachByName('StringTrim')
-            ->attachByName('StripTags')
-        ;
         $phoneRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
         $contact_phone = new Input('contact_phone');
         $contact_phone->getValidatorChain()
@@ -83,15 +73,33 @@ class PostFilter extends InputFilter
         $cityCode->getValidatorChain()
             ->attachByName('InArray', array('haystack' => array()))
         ;
-        $codeRegex = new Regex(array('pattern' => '/^[a-zA-Z0-9 ]**$/'));
+        $contact_email = new Input('contact_email');
+
+
+        $contactRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
+        $contact_name = new Input('contact_name');
+        $contact_name->getValidatorChain()
+            ->attach($phoneRegex)
+        ;
+
+        $codeRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
         $delete_code = new Input('delete_code');
         $delete_code->getValidatorChain()
-            ->attach($codeRegex)
+            ->attach($phoneRegex)
         ;
 
 
         $this->add($category)
             ->add($title)
+            ->add($price)
+            ->add($data_expires)
+            ->add($description)
+            ->add($photo_filername)
+            ->add($contact_name)
+            ->add($contact_email)
+            ->add($contact_phone)
+            ->add($cityCode)
+            ->add($delete_code)
         ;
 
     }

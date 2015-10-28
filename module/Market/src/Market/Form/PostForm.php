@@ -83,6 +83,15 @@ class PostForm extends Form{
 
         $this->add($category)
             ->add($title)
+            ->add($price)
+            ->add($data_expires)
+            ->add($description)
+            ->add($photo_filername)
+            ->add($contact_name)
+            ->add($contact_email)
+            ->add($contact_phone)
+            ->add($cityCode)
+            ->add($delete_code)
             ->add($submit)
         ;
 
