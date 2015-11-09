@@ -59,7 +59,7 @@ class PostFilter extends InputFilter
         $description->getValidatorChain()
             ->attachByName('StringLength', array('min'=>1, 'max'=>128))
         ;
-        $photoRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
+        $photoRegex = new Regex(array('pattern' => '/^[a-zA-Z0-9 ]*$/'));
         $photo_filername = new Input('photo_filername');
         $photo_filername->getValidatorChain()
             ->attach($photoRegex)
@@ -76,10 +76,10 @@ class PostFilter extends InputFilter
         $contact_email = new Input('contact_email');
 
 
-        $contactRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
+        $contactRegex = new Regex(array('pattern' => '/^[a-zA-Z0-9 ]*$/'));
         $contact_name = new Input('contact_name');
         $contact_name->getValidatorChain()
-            ->attach($phoneRegex)
+            ->attach($contactRegex)
         ;
 
         $codeRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));

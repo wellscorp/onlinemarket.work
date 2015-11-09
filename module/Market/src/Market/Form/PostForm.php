@@ -54,26 +54,30 @@ class PostForm extends Form{
         ;
 
         $price = new Element\Number('price');
-        $price->setLabel('price');
+        $price->setLabel('Price');
         $data_expires = new Element\Radio('data_expires');
-        $data_expires->setLabel('data_expires');
+        $data_expires->setLabel('Data Expires')
+            ->setValueOptions(array('1','2','3','4','5'))
+        ;
         $description = new Element\Textarea('description');
-        $description->setLabel('description');
+        $description->setLabel('Description');
         $photo_filername = new Element\Url('photo_filername');
-        $photo_filername->setLabel('photo_filername');
+        $photo_filername->setLabel('Photo');
         $contact_name = new Element\Text('contact_name');
-        $contact_name->setLabel('contact_name');
+        $contact_name->setLabel('Contact Name');
         $contact_email = new Element\Email('contact_email');
-        $contact_email->setLabel('contact_email');
+        $contact_email->setLabel('Contact Email');
         $contact_phone = new Element\Text('contact_phone');
-        $contact_phone->setLabel('contact_phone');
-        $cityCode = new Element\Select('cityCode');
-        $cityCode->setLabel('cityCode');
+        $contact_phone->setLabel('Contact Phone');
+        $cityCode = new Element\Radio('cityCode');
+        $cityCode->setLabel('City')
+            ->setValueOptions(array('Salvador','Rio de Janeiro', 'São Paulo'))
+        ;
 
         $delete_code = new Element\Number('delete_code');
-        $delete_code->setLabel('delete_code');
+        $delete_code->setLabel('Delete Code');
         $captcha = new Element\Captcha('captcha');
-        $captcha->setLabel('captcha');
+        $captcha->setLabel('Captcha');
 
 
 
