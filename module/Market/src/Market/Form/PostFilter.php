@@ -71,7 +71,7 @@ class PostFilter extends InputFilter
         ;
         $cityCode = new Input('cityCode');
         $cityCode->getValidatorChain()
-            ->attachByName('InArray', array('haystack' => array()))
+            ->attachByName('InArray', array('haystack' => array('Salvador','Rio de Janeiro', 'São Paulo')))
         ;
         $contact_email = new Input('contact_email');
 
