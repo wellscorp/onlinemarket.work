@@ -59,7 +59,7 @@ class PostFilter extends InputFilter
         $description->getValidatorChain()
             ->attachByName('StringLength', array('min'=>1, 'max'=>128))
         ;
-        $photoRegex = new Regex(array('pattern' => '/^[a-zA-Z0-9 ]*$/'));
+        $photoRegex = new Regex(array('pattern' => '/(http:\/\/[\w\.\/-]+)/'));
         $photo_filername = new Input('photo_filername');
         $photo_filername->getValidatorChain()
             ->attach($photoRegex)
