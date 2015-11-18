@@ -14,6 +14,8 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController{
 
+    use ListingsTableTrait;
+
     public function indexAction(){
 
         $messages = array();
@@ -21,8 +23,9 @@ class IndexController extends AbstractActionController{
             $messages = $this->flashMessenger()->getMessages();
         }
 
-        return array('messages' => $messages);
-        //return new ViewModel(array('messages' => $messages));
+        $itemRecent = $this->listingsTable->getLatestListing();
+
+        return array('messages' => $messages, 'item' => $itemRecent);
     }
 
     public function fooAction()

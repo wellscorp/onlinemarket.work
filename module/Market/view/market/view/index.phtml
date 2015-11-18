@@ -1,1 +1,25 @@
 <?php echo '<h1>' .$this->escapeHtml($this->category). '</h1>'; ?>
+<?php //echo $this->url('market', array('controller' => 'view', 'action' => 'item', 'id' => 2 )) ?>
+<?php if($this->list instanceof Zend\Db\ResultSet\ResultSet): ?>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th></th>
+            <th>Posted</th>
+        </tr>
+        <?php while($item = $this->list->current()): ?>
+            <tr style="background-color: <?php echo $this->cycle(['red', '#FAC542','blue'])->next(); ?>">
+                <th>
+                    <a href="/market/view/item/<?php echo $item->listings_id  ?>"><?php echo $this->escapeHtml($item['title']); ?></a>
+                </th>
+                <th><?php echo $this->escapeHtml( (float) $item['price']); ?></th>
+                <th></th>
+                <th><?php echo $this->escapeHtml($item['date_created']); ?></th>
+            </tr>
+            <?php $this->list->next(); ?>
+        <?php endwhile; ?>
+    </table>
+<?php else : ?>
+    <?php Zend\Debug\Debug::dump($this->list); ?>
+<?php endif; ?>

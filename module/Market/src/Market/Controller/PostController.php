@@ -14,6 +14,8 @@ use Zend\View\Model\ViewModel;
 
 class PostController extends AbstractActionController{
 
+    use ListingsTableTrait;
+
     public $categories;
     private $postForm;
 
@@ -34,6 +36,7 @@ class PostController extends AbstractActionController{
         if($this->getRequest()->isPost()){
             $this->postForm->setData($data);
             if($this->postForm->isValid()){
+                $this->listingsTable->addPosting($this->postForm->getData());
                 $this->flashMessenger()->addMessage('Thanks for posting!');
                 $this->redirect()->toRoute('home');
             }else{
