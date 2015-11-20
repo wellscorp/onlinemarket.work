@@ -55,8 +55,8 @@ class PostForm extends Form{
 
         $price = new Element\Number('price');
         $price->setLabel('Price');
-        $data_expires = new Element\Radio('data_expires');
-        $data_expires->setLabel('Data Expires')
+        $data_expires = new Element\Radio('date_expires');
+        $data_expires->setLabel('Date Expires')
             ->setValueOptions(array('1','2','3','4','5'))
         ;
         $description = new Element\Textarea('description');
@@ -71,7 +71,7 @@ class PostForm extends Form{
         $contact_phone->setLabel('Contact Phone');
         $cityCode = new Element\Radio('cityCode');
         $cityCode->setLabel('City')
-            ->setValueOptions(array('Salvador','Rio de Janeiro', 'São Paulo'))
+            ->setValueOptions(array('Salvador' =>'Salvador','Rio de Janeiro' => 'Rio de Janeiro', 'São Paulo' => 'São Paulo'))
         ;
 
         $delete_code = new Element\Number('delete_code');
