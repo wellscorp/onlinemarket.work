@@ -57,7 +57,7 @@ class PostForm extends Form{
         $price->setLabel('Price');
         $data_expires = new Element\Radio('date_expires');
         $data_expires->setLabel('Date Expires')
-            ->setValueOptions(array('1','2','3','4','5'))
+            ->setValueOptions(array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5'))
         ;
         $description = new Element\Textarea('description');
         $description->setLabel('Description');

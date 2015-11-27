@@ -52,8 +52,8 @@ class PostFilter extends InputFilter
         $price->getValidatorChain()
             ->attach($priceRegex)
         ;
-        $data_expires = new Input('data_expires');
-        $data_expires->getValidatorChain()
+        $date_expires = new Input('date_expires');
+        $date_expires->getValidatorChain()
         ;
         $description = new Input('description');
         $description->getValidatorChain()
@@ -92,7 +92,7 @@ class PostFilter extends InputFilter
         $this->add($category)
             ->add($title)
             ->add($price)
-            ->add($data_expires)
+            ->add($date_expires)
             ->add($description)
             ->add($photo_filername)
             ->add($contact_name)
