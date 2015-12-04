@@ -52,16 +52,13 @@ class PostFilter extends InputFilter
         $price->getValidatorChain()
             ->attach($priceRegex)
         ;
-        $date_expires = new Input('date_expires');
-        $date_expires->getValidatorChain()
-        ;
         $description = new Input('description');
         $description->getValidatorChain()
             ->attachByName('StringLength', array('min'=>1, 'max'=>128))
         ;
         $photoRegex = new Regex(array('pattern' => '/(http:\/\/[\w\.\/-]+)/'));
-        $photo_filername = new Input('photo_filername');
-        $photo_filername->getValidatorChain()
+        $photo_filename = new Input('photo_filename');
+        $photo_filename->getValidatorChain()
             ->attach($photoRegex)
         ;
         $phoneRegex = new Regex(array('pattern' => '/^[0-9 ]*$/'));
@@ -71,7 +68,11 @@ class PostFilter extends InputFilter
         ;
         $cityCode = new Input('cityCode');
         $cityCode->getValidatorChain()
-            ->attachByName('InArray', array('haystack' => array('Salvador','Rio de Janeiro', 'São Paulo')))
+            ->attachByName('InArray', array('haystack' => array('Salvador, Brasil','Rio de Janeiro, Brasil', 'São Paulo, Brasil')))
+        ;
+        $date_expires = new Input('date_expires');
+        $date_expires->getValidatorChain()
+            ->attachByName('InArray', array('haystack' => array('1','2', '3','4','5')))
         ;
         $contact_email = new Input('contact_email');
 
@@ -94,7 +95,7 @@ class PostFilter extends InputFilter
             ->add($price)
             ->add($date_expires)
             ->add($description)
-            ->add($photo_filername)
+            ->add($photo_filename)
             ->add($contact_name)
             ->add($contact_email)
             ->add($contact_phone)

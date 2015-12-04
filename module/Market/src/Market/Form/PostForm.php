@@ -61,8 +61,8 @@ class PostForm extends Form{
         ;
         $description = new Element\Textarea('description');
         $description->setLabel('Description');
-        $photo_filername = new Element\Url('photo_filername');
-        $photo_filername->setLabel('Photo');
+        $photo_filename = new Element\Url('photo_filename');
+        $photo_filename->setLabel('Photo');
         $contact_name = new Element\Text('contact_name');
         $contact_name->setLabel('Contact Name');
         $contact_email = new Element\Email('contact_email');
@@ -71,7 +71,7 @@ class PostForm extends Form{
         $contact_phone->setLabel('Contact Phone');
         $cityCode = new Element\Radio('cityCode');
         $cityCode->setLabel('City')
-            ->setValueOptions(array('Salvador' =>'Salvador','Rio de Janeiro' => 'Rio de Janeiro', 'São Paulo' => 'São Paulo'))
+            ->setValueOptions(array('Salvador, Brasil' =>'Salvador, Brasil','Rio de Janeiro, Brasil' => 'Rio de Janeiro, Brasil', 'São Paulo, Brasil' => 'São Paulo, Brasil'))
         ;
 
         $delete_code = new Element\Number('delete_code');
@@ -90,7 +90,7 @@ class PostForm extends Form{
             ->add($price)
             ->add($data_expires)
             ->add($description)
-            ->add($photo_filername)
+            ->add($photo_filename)
             ->add($contact_name)
             ->add($contact_email)
             ->add($contact_phone)
